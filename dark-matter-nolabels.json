@@ -1726,8 +1726,8 @@
       "minzoom": 6,
       "maxzoom": 24,
       "filter": ["all", ["==", "admin_level", 2], ["==", "maritime", 0]],
-      "layout": { "visibility": "none" },
       "layout": { "line-cap": "round", "line-join": "round" },
+      "layout": { "visibility": "none" },
       "paint": {
         "line-color": "#2C353C",
         "line-opacity": 0.5,
@@ -1742,8 +1742,8 @@
       "source-layer": "boundary",
       "minzoom": 0,
       "filter": ["all", ["==", "admin_level", 2], ["==", "maritime", 0]],
-      "layout": { "visibility": "none" },
       "layout": { "line-cap": "round", "line-join": "round" },
+      "layout": { "visibility": "none" },
       "paint": {
         "line-color": {
           "stops": [
