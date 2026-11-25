@@ -1,0 +1,279 @@
+{
+  "version": 8,
+  "name": "Topostyle",
+  "metadata": {},
+  "sources": {
+    "carto": {
+      "type": "vector",
+      "url": "https://tiles.basemaps.cartocdn.com/vector/carto.streets/v1/tiles.json"
+    }
+  },
+  "sprite": "https://tiles.basemaps.cartocdn.com/gl/positron-gl-style/sprite",
+  "glyphs": "https://tiles.basemaps.cartocdn.com/fonts/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "paper_background",
+      "type": "background",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "background-color": "#f3efe6",
+        "background-opacity": 1
+      }
+    },
+    {
+      "id": "urban_fabric_tint",
+      "type": "fill",
+      "source": "carto",
+      "source-layer": "landuse",
+      "minzoom": 8,
+      "filter": [
+        "==",
+        "class",
+        "residential"
+      ],
+      "paint": {
+        "fill-color": "#e8e1d3",
+        "fill-opacity": {
+          "stops": [
+            [8, 0.55],
+            [14, 0.3]
+          ]
+        }
+      }
+    },
+    {
+      "id": "greenery_landcover",
+      "type": "fill",
+      "source": "carto",
+      "source-layer": "landcover",
+      "minzoom": 7,
+      "filter": [
+        "any",
+        ["==", "class", "wood"],
+        ["==", "class", "grass"],
+        ["==", "subclass", "recreation_ground"]
+      ],
+      "paint": {
+        "fill-color": "#7d9478",
+        "fill-opacity": 0.72
+      }
+    },
+    {
+      "id": "greenery_parks",
+      "type": "fill",
+      "source": "carto",
+      "source-layer": "park",
+      "minzoom": 6,
+      "filter": [
+        "in",
+        "class",
+        "national_park",
+        "nature_reserve"
+      ],
+      "paint": {
+        "fill-color": "#6a8265",
+        "fill-opacity": 0.75
+      }
+    },
+    {
+      "id": "water_bodies",
+      "type": "fill",
+      "source": "carto",
+      "source-layer": "water",
+      "minzoom": 0,
+      "filter": [
+        "==",
+        "$type",
+        "Polygon"
+      ],
+      "paint": {
+        "fill-color": "#2b4c6f",
+        "fill-antialias": true,
+        "fill-opacity": 1
+      }
+    },
+    {
+      "id": "water_streams",
+      "type": "line",
+      "source": "carto",
+      "source-layer": "waterway",
+      "minzoom": 8,
+      "paint": {
+        "line-color": "#3b628c",
+        "line-width": {
+          "stops": [
+            [8, 0.8],
+            [13, 1.8],
+            [17, 3.2]
+          ]
+        }
+      }
+    },
+    {
+      "id": "roads_local_grid",
+      "type": "line",
+      "source": "carto",
+      "source-layer": "transportation",
+      "minzoom": 13,
+      "filter": [
+        "all",
+        ["in", "class", "secondary", "tertiary"],
+        ["!=", "brunnel", "tunnel"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#d99b82",
+        "line-opacity": 0.85,
+        "line-width": {
+          "stops": [
+            [13, 0.8],
+            [15, 1.6],
+            [18, 3.5]
+          ]
+        }
+      }
+    },
+    {
+      "id": "roads_primary_arteries",
+      "type": "line",
+      "source": "carto",
+      "source-layer": "transportation",
+      "minzoom": 9,
+      "filter": [
+        "all",
+        ["==", "class", "primary"],
+        ["!=", "ramp", 1],
+        ["!=", "brunnel", "tunnel"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#cf7d61",
+        "line-width": {
+          "stops": [
+            [9, 0.9],
+            [13, 2],
+            [16, 4],
+            [18, 6.5]
+          ]
+        }
+      }
+    },
+    {
+      "id": "roads_highways",
+      "type": "line",
+      "source": "carto",
+      "source-layer": "transportation",
+      "minzoom": 6,
+      "filter": [
+        "all",
+        ["in", "class", "motorway", "trunk"],
+        ["!=", "ramp", 1],
+        ["!=", "brunnel", "tunnel"]
+      ],
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "#b85437",
+        "line-width": {
+          "stops": [
+            [6, 1],
+            [11, 2.4],
+            [15, 4.8],
+            [18, 8]
+          ]
+        }
+      }
+    },
+    {
+      "id": "railways_ink",
+      "type": "line",
+      "source": "carto",
+      "source-layer": "transportation",
+      "minzoom": 12,
+      "filter": [
+        "all",
+        ["==", "class", "rail"],
+        ["!=", "brunnel", "tunnel"]
+      ],
+      "paint": {
+        "line-color": "#6e655c",
+        "line-width": {
+          "stops": [
+            [12, 0.7],
+            [16, 1.3]
+          ]
+        },
+        "line-dasharray": [3, 3]
+      }
+    },
+    {
+      "id": "buildings_figure_ground",
+      "type": "fill",
+      "source": "carto",
+      "source-layer": "building",
+      "minzoom": 13,
+      "paint": {
+        "fill-color": "#2c2d30",
+        "fill-outline-color": "#1c1d1f",
+        "fill-antialias": true,
+        "fill-opacity": {
+          "stops": [
+            [13, 0.65],
+            [14.5, 0.92]
+          ]
+        }
+      }
+    },
+    {
+      "id": "admin_regions",
+      "type": "line",
+      "source": "carto",
+      "source-layer": "boundary",
+      "minzoom": 5,
+      "filter": [
+        "all",
+        ["==", "admin_level", 4],
+        ["==", "maritime", 0]
+      ],
+      "paint": {
+        "line-color": "#8c7f70",
+        "line-width": 0.9,
+        "line-dasharray": [4, 2],
+        "line-opacity": 0.7
+      }
+    },
+    {
+      "id": "admin_country",
+      "type": "line",
+      "source": "carto",
+      "source-layer": "boundary",
+      "minzoom": 2,
+      "filter": [
+        "all",
+        ["==", "admin_level", 2],
+        ["==", "maritime", 0]
+      ],
+      "paint": {
+        "line-color": "#594f45",
+        "line-width": {
+          "stops": [
+            [2, 0.8],
+            [7, 1.6]
+          ]
+        }
+      }
+    }
+  ],
+  "id": "terracotta-blueprint",
+  "owner": "Custom"
+}
