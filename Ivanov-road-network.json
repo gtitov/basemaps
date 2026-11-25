@@ -1,7 +1,10 @@
 {
   "version": 8,
-  "name": "Ivanov-road-map",
-  "metadata": {},
+  "name": "SergeyMGU road network (orange)",
+  "metadata": {
+    "description": "Оранжевая подложка с акцентом на дорожную сеть: насыщенное полотно для всех классов дорог, тёмная обводка, приглушённый фон. База — CARTO Voyager.",
+    "source_style": "SergeyMGU_road_map.json"
+  },
   "sources": {
     "carto": {
       "type": "vector",
@@ -356,7 +359,7 @@
         "fill-antialias": true,
         "fill-opacity": 1
       },
-      "minzoom": 12,
+      "minzoom": 13,
       "maxzoom": 24
     },
     {
@@ -379,7 +382,7 @@
         "fill-color": "#F4ECE0",
         "fill-opacity": 1
       },
-      "minzoom": 14,
+      "minzoom": 13,
       "maxzoom": 24
     },
     {
@@ -1391,7 +1394,6 @@
       "type": "line",
       "source": "carto",
       "source-layer": "transportation",
-      "minzoom": 11,
       "maxzoom": 24,
       "filter": [
         "all",
@@ -1416,7 +1418,8 @@
             [18, 11.23]
           ]
         }
-      }
+      },
+      "minzoom": 9
     },
     {
       "id": "road_sec_fill_noramp",
